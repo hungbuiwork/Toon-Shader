@@ -1606,6 +1606,7 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1749,7 +1750,7 @@ MonoBehaviour:
       motionGridSize: 64
       colorBlindnessType: 0
       colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_Resources: {fileID: 0}
   m_ShowToolkit: 0
   m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
@@ -1772,6 +1773,23 @@ MonoBehaviour:
   cameraHeight: 0.06
   offset: {x: 0, y: 0, z: 0}
   locked: 0
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 0}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1001 &973406743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4159,6 +4177,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree2
       objectReference: {fileID: 0}
+    - target: {fileID: 1438310613011738310, guid: b5c76c73fc9f4384db3878873be24b66, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a00e6890d84d0e04787316b14590e24b, type: 2}
+    - target: {fileID: 6753154940419282286, guid: b5c76c73fc9f4384db3878873be24b66, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd76a6f3ae36b55428ba1207710d07d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c76c73fc9f4384db3878873be24b66, type: 3}
 --- !u!1 &2292800701760674255
@@ -11124,6 +11150,22 @@ PrefabInstance:
       propertyPath: throwscale
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3122666136520410809, guid: e5c59db827bad4649ab5f4aa43385d9b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122666136520410809, guid: e5c59db827bad4649ab5f4aa43385d9b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b687a55f6a4ffa43bf15435c4526f9c, type: 2}
+    - target: {fileID: 3122666136520410809, guid: e5c59db827bad4649ab5f4aa43385d9b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ee943b5cb07f934183f7a1b942cb7c2, type: 2}
+    - target: {fileID: 3122666136520410809, guid: e5c59db827bad4649ab5f4aa43385d9b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d2cc85abaa43a84d8efda86390e5934, type: 2}
     - target: {fileID: 6000166965607530102, guid: e5c59db827bad4649ab5f4aa43385d9b, type: 3}
       propertyPath: m_Name
       value: SporoPrefab
