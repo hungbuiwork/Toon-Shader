@@ -61,7 +61,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeSmoothness: 0.158
+    - _EdgeSmoothness: 0.01
     - _GlossMapScale: 1
     - _Glossiness: 9.4
     - _GlossyReflections: 1
