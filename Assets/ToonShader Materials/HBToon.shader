@@ -16,6 +16,9 @@ Shader "Custom/HBToon"
         _SpecularColor("Specular Color", Color) = (0,0,0,0)
         _SpecularSmoothness("Specular Smoothness", Range(0.001, 0.01)) = 0.001
         _Glossiness("Glossiness", Float) = 32
+        _RimColor("Rim Color", Color) = (1,1,1,1)
+        _RimAmount("Rim Amount", Range(0,1))= 1
+        _RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
     }
     SubShader
     {
@@ -28,10 +31,12 @@ Shader "Custom/HBToon"
             CGPROGRAM
 
             #include "UnityCG.cginc"
+            #include "AutoLight.cginc"
             //pragmas
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fwdbase
+
             //user defined variable
             uniform float4 _Color;
             uniform float4 _AmbientColor;
@@ -40,6 +45,9 @@ Shader "Custom/HBToon"
             uniform float _Glossiness;
             uniform float4 _SpecularColor;
             uniform float _SpecularSmoothness;
+            uniform float4 _RimColor;
+            uniform float _RimAmount;
+            uniform float _RimThreshold;
             //unity defined variable
             uniform float3 _LightColor0;
 
@@ -74,8 +82,12 @@ Shader "Custom/HBToon"
                 float3 halfVector = normalize(lightDir + viewDir);
                 float specularIntensity = smoothstep(.01 - _SpecularSmoothness, .01 + _SpecularSmoothness,  _SpecularColor * pow(dot(i.normal, halfVector) * lightIntensity, _Glossiness * _Glossiness));
                 float4 specular = specularIntensity * _SpecularColor;
+                //Calculate rim shading
+                float rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, 1.0 - dot(viewDir, i.normal)) * pow(lightIntensity,_RimThreshold);
+
+                float4 rim = rimIntensity * _RimColor;
                 //combine lighting, color, etc.
-                return _Color * (float4(light, 0.0) + _AmbientColor + specular);
+                return _Color * (float4(light, 0.0) + _AmbientColor + specular + rim);
             }
             ENDCG
         }
