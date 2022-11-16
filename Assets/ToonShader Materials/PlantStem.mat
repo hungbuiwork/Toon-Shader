@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Plant
+  m_Name: PlantStem
   m_Shader: {fileID: 4800000, guid: 09a5bafaed01cf146abda14e048276f6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -61,6 +61,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EdgeSmoothness: 0.01
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -71,11 +72,13 @@ Material:
     - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularSmoothness: 0.001
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.03198047, g: 0.7264151, b: 0.32132828, a: 1}
+    - _AmbientColor: {r: 0.14423873, g: 0.17441127, b: 0.3207547, a: 1}
+    - _Color: {r: 0.03832916, g: 0.1792453, b: 0.1624195, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.24540165, g: 0.34928367, b: 0.41509432, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
