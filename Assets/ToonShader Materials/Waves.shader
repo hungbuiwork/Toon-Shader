@@ -99,8 +99,7 @@ Shader "Custom/Wavy"
                     float offset_z = k * (v.vertex.z + _AnimationSpeed * _Time.z);
                     float3 tangent_x = normalize(float3(1, k * _Amplitude * cos(offset_x), 0));
                     float3 tangent_z = normalize(float3(1, k * _Amplitude * cos(offset_z), 0));
-                    o.normal = float3(-tangent_x.y, tangent_x.x, 0) + float3(-tangent_z.y, -tangent_z.x, 0);
-                    o.pos.y += _Amplitude *  sin(offset_x) *  sin(offset_z);
+                     o.pos.y += _Amplitude *  sin(offset_x) *  sin(offset_z);
                 }
                 o.pos = UnityObjectToClipPos(o.pos);
                 o.viewDir = WorldSpaceViewDir(v.vertex);

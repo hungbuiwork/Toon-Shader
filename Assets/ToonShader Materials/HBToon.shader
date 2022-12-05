@@ -4,6 +4,7 @@ Shader "Custom/HBToon"
     
     Properties
     {
+        [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
         [Header(Color Settings)]
         _Color ("Color", Color) = (1,1,1,1)
         _AmbientColor("Ambient Color", Color) = (.5,.5,.5,1)
@@ -30,10 +31,12 @@ Shader "Custom/HBToon"
         [MaterialToggle]_EnableOutline("Enable Outline", Float) = 0
         _OutlineSize("Outline Size", Range(0, 0.1)) = 0
         _OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
-
-        [Header(Animation Settings)]
+        _DepthOffset("Outline Depth", Range(0, .2)) = 0
+        [Header(DELETE)]
         [MaterialToggle]_EnableAnimation("Enable Animation", Float) = 0
         _AnimationSpeed("Animation Speed", Range(0,100)) = 1
+
+
 
     }
     SubShader
@@ -48,7 +51,8 @@ Shader "Custom/HBToon"
             uniform float _OutlineSize;
             uniform float4 _OutlineColor;
             uniform float _EnableOutline;
-            
+            uniform float _DepthOffset;
+
             struct vertexInput{
                 float4 vertex: POSITION;
                 float3 normal: NORMAL;
@@ -71,7 +75,9 @@ Shader "Custom/HBToon"
                 else{
                     o.pos = v.vertex;
                 }
+                float depthOffset = _DepthOffset;
                 o.pos = UnityObjectToClipPos(o.pos);
+                o.pos.z -= _DepthOffset;
                 o.viewDir = WorldSpaceViewDir(v.vertex);
                 return o;
             }
@@ -98,6 +104,8 @@ Shader "Custom/HBToon"
             #pragma fragment frag
             #pragma multi_compile_fwdbase
 
+
+
             //user defined variables
             uniform float4 _Color;
             uniform float4 _AmbientColor;
@@ -110,11 +118,12 @@ Shader "Custom/HBToon"
             uniform float _RimAmount;
             uniform float _RimIntensity;
             uniform float _RimSmoothness;
+            uniform sampler2D _MainTex;
             //user defined variables: toggle variables
             uniform float _EnableShadows;
             uniform float _EnableSpecularLight;
             uniform float _EnableRimlight;
-
+            //DELETE
             uniform float _EnableAnimation;
             uniform float _AnimationSpeed;
             //unity defined variables
@@ -124,12 +133,14 @@ Shader "Custom/HBToon"
             struct vertexInput{
                 float4 vertex: POSITION;
                 float3 normal: NORMAL;
+                float2 uv : TEXCOORD0;
             };
             //output of vertex shader, input of fragment shader
             struct v2f{
                 float4 pos: SV_POSITION;
                 float3 normal: NORMAL;
                 float3 viewDir: TEXCOORD1;
+                float2 uv : TEXCOORD0;
             };
 
             v2f vert(vertexInput v){
@@ -139,8 +150,10 @@ Shader "Custom/HBToon"
                 o.pos = v.vertex;
                 o.pos = UnityObjectToClipPos(o.pos);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
+                o.uv = v.uv;
                 return o;
             }
+
 
             float4 frag(v2f i): Color{
                 float3 lightDir;
@@ -172,7 +185,6 @@ Shader "Custom/HBToon"
             ENDCG
         }
         
-    
     }
     //fallback in case subshader fails
     FallBack "Diffuse"

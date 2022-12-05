@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 18214e9d6af6248559d501391856f1c7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -57,12 +57,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AnimationSpeed: 100
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0.09
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.108
-    - _EnableRimlight: 0
+    - _EnableAnimation: 1
+    - _EnableOutline: 1
+    - _EnableRimlight: 1
     - _EnableShadows: 1
     - _EnableSpecularLight: 1
     - _GlossMapScale: 1
@@ -71,25 +75,30 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineSize: 0.0005
     - _Parallax: 0.02
-    - _RimAmount: 0.401
-    - _RimIntensity: 0.207
+    - _RimAmount: 0.41
+    - _RimIntensity: 1
+    - _RimOutlineAmount: 0.5
     - _RimSmoothness: 0.01
     - _RimThreshold: 1
-    - _ShadowSmoothness: 0.387
-    - _ShadowThreshold: 0.18
+    - _ShadowSmoothness: 0.01
+    - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 24
-    - _SpecularSmoothness: 0.0096
+    - _SpecularIntensity: 22.42
+    - _SpecularSmoothness: 0.001
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - _temp: 0
     m_Colors:
-    - _AmbientColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.09410227, g: 0.15929025, b: 0.24528301, a: 1}
+    - _AmbientColor: {r: 0.0049839793, g: 0.017614514, b: 0.028301895, a: 1}
+    - _Color: {r: 0.19579919, g: 0.3155016, b: 0.5660378, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.10166724, g: 0.17354003, b: 0.21698111, a: 1}
+    - _RimOutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecularColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
   m_BuildTextureStacks: []

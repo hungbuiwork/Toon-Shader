@@ -57,11 +57,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AnimationSpeed: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0.18
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
+    - _EnableAnimation: 0
     - _EnableOutline: 1
     - _EnableRimlight: 1
     - _EnableShadows: 1
@@ -72,7 +75,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.0307
+    - _OutlineSize: 0.1
     - _Parallax: 0.02
     - _RimAmount: 0.627
     - _RimIntensity: 1

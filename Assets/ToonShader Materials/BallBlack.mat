@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 18214e9d6af6248559d501391856f1c7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -57,11 +57,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AnimationSpeed: 100
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0.09
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.42
+    - _EnableAnimation: 1
     - _EnableOutline: 1
     - _EnableRimlight: 1
     - _EnableShadows: 1
@@ -72,17 +75,18 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.0003
+    - _OutlineSize: 0.0005
     - _Parallax: 0.02
-    - _RimAmount: 0.44
-    - _RimIntensity: 0.207
+    - _RimAmount: 0.41
+    - _RimIntensity: 1
+    - _RimOutlineAmount: 0.624
     - _RimSmoothness: 0.01
     - _RimThreshold: 0.649
     - _ShadowSmoothness: 0.01
     - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 24.1
+    - _SpecularIntensity: 22.42
     - _SpecularSmoothness: 0.001
     - _SrcBlend: 1
     - _UVSec: 0
@@ -93,6 +97,8 @@ Material:
     - _Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimOutlineColor: {r: 1, g: 0.06289297, b: 0.06289297, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
