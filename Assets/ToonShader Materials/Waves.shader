@@ -1,10 +1,10 @@
 
-Shader "Custom/HBToon"
+Shader "Custom/Wavy"
 {
     
     Properties
     {
-        [Header(Color Settings)]
+       [Header(Color Settings)]
         _Color ("Color", Color) = (1,1,1,1)
         _AmbientColor("Ambient Color", Color) = (.5,.5,.5,1)
 
@@ -26,63 +26,15 @@ Shader "Custom/HBToon"
         _RimAmount("Rim Amount", Range(0,1))= .5
         _RimIntensity("Rim Intensity", Range(0, 1)) = 1
 
-        [Header(Outline Settings)]
-        [MaterialToggle]_EnableOutline("Enable Outline", Float) = 0
-        _OutlineSize("Outline Size", Range(0, 0.1)) = 0
-        _OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
-
         [Header(Animation Settings)]
         [MaterialToggle]_EnableAnimation("Enable Animation", Float) = 0
         _AnimationSpeed("Animation Speed", Range(0,100)) = 1
+        _Amplitude("Amplitude", Range(0,10)) = 1
+        _Wavelength("Wavelength", Range(0,10)) = 1
 
     }
     SubShader
     {
-        Pass{
-            Cull front
-            CGPROGRAM
-            #include "UnityCG.cginc"
-            #pragma vertex vert
-            #pragma fragment frag
-
-            uniform float _OutlineSize;
-            uniform float4 _OutlineColor;
-            uniform float _EnableOutline;
-            
-            struct vertexInput{
-                float4 vertex: POSITION;
-                float3 normal: NORMAL;
-            };
-            //output of vertex shader, input of fragment shader
-            struct v2f{
-                float4 pos: SV_POSITION;
-                float3 normal: NORMAL;
-                float3 viewDir: TEXCOORD1;
-            };
-
-
-            v2f vert(vertexInput v){
-                v2f o;
-                //Computer correct normals, positions, and the view direction
-                o.normal = normalize(mul(float4(v.normal, 0.0), unity_WorldToObject).xyz);
-                if (_EnableOutline){
-                    o.pos = v.vertex + _OutlineSize * normalize(float4(v.normal, 0.0));
-                }
-                else{
-                    o.pos = v.vertex;
-                }
-                o.pos = UnityObjectToClipPos(o.pos);
-                o.viewDir = WorldSpaceViewDir(v.vertex);
-                return o;
-            }
-
-            float4 frag(v2f i): Color{
-                return _OutlineColor;
-            }
-            ENDCG
-            
-
-        }
 
         Pass {
             Tags{ 
@@ -97,6 +49,7 @@ Shader "Custom/HBToon"
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fwdbase
+        
 
             //user defined variables
             uniform float4 _Color;
@@ -115,8 +68,11 @@ Shader "Custom/HBToon"
             uniform float _EnableSpecularLight;
             uniform float _EnableRimlight;
 
+        
             uniform float _EnableAnimation;
             uniform float _AnimationSpeed;
+            uniform float _Amplitude;
+            uniform float _Wavelength;
             //unity defined variables
             uniform float3 _LightColor0;
 
@@ -137,6 +93,15 @@ Shader "Custom/HBToon"
                 //Computer correct normals, positions, and the view direction
                 o.normal = normalize(mul(float4(v.normal, 0.0), unity_WorldToObject).xyz);
                 o.pos = v.vertex;
+                if (_EnableAnimation){
+                    float k = 2 * UNITY_PI / _Wavelength;
+                    float offset_x = k * (v.vertex.x + _AnimationSpeed * _Time.x);
+                    float offset_z = k * (v.vertex.z + _AnimationSpeed * _Time.z);
+                    float3 tangent_x = normalize(float3(1, k * _Amplitude * cos(offset_x), 0));
+                    float3 tangent_z = normalize(float3(1, k * _Amplitude * cos(offset_z), 0));
+                    o.normal = float3(-tangent_x.y, tangent_x.x, 0) + float3(-tangent_z.y, -tangent_z.x, 0);
+                    o.pos.y += _Amplitude *  sin(offset_x) *  sin(offset_z);
+                }
                 o.pos = UnityObjectToClipPos(o.pos);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
                 return o;

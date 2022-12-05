@@ -62,6 +62,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
+    - _EnableRimlight: 0
+    - _EnableShadows: 1
+    - _EnableSpecularLight: 0
     - _GlossMapScale: 1
     - _Glossiness: -8.8
     - _GlossyReflections: 1
@@ -69,15 +72,20 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimAmount: 0.531
+    - _RimAmount: 0
+    - _RimIntensity: 0.1
+    - _RimSmoothness: 0.01
     - _RimThreshold: 0.1
+    - _ShadowSmoothness: 0.01
     - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularIntensity: 0
     - _SpecularSmoothness: 0.001
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _temp: 0
     m_Colors:
     - _AmbientColor: {r: 0.745283, g: 0.5441787, b: 0.41951463, a: 1}
     - _Color: {r: 0.8867924, g: 0.683927, b: 0.5409991, a: 1}
