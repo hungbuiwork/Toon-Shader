@@ -59,8 +59,11 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EnableCastShadows: 1
+    - _EnableOutline: 0
     - _EnableRimlight: 1
     - _EnableShadows: 1
     - _EnableSpecularLight: 1
@@ -70,6 +73,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineSize: 0
     - _Parallax: 0.02
     - _RimAmount: 0.5
     - _RimIntensity: 1
@@ -87,6 +91,7 @@ Material:
     - _AmbientColor: {r: 0.3571852, g: 0.39323348, b: 0.5283019, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 1, b: 0.85723424, a: 1}
     - _SpecularColor: {r: 0.4528302, g: 0.09683157, b: 0.09683157, a: 1}
   m_BuildTextureStacks: []

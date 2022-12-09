@@ -65,6 +65,7 @@ Material:
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
     - _EnableAnimation: 0
+    - _EnableCastShadows: 1
     - _EnableOutline: 1
     - _EnableRimlight: 1
     - _EnableShadows: 1

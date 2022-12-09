@@ -57,11 +57,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AnimationSpeed: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0.001
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
+    - _EnableAnimation: 0
+    - _EnableCastShadows: 1
     - _EnableOutline: 0
     - _EnableRimlight: 1
     - _EnableShadows: 1
@@ -74,7 +78,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineSize: 0
     - _Parallax: 0.02
-    - _RimAmount: 0.444
+    - _RimAmount: 0.559
     - _RimIntensity: 0.1
     - _RimSmoothness: 0.01
     - _RimThreshold: 1
@@ -89,8 +93,8 @@ Material:
     - _ZWrite: 1
     - _temp: 0
     m_Colors:
-    - _AmbientColor: {r: 0.14255893, g: 0.04034648, b: 0.18867922, a: 1}
-    - _Color: {r: 0.1981132, g: 0.13955143, b: 0.124599494, a: 1}
+    - _AmbientColor: {r: 0.16981131, g: 0.10039158, b: 0.10039158, a: 1}
+    - _Color: {r: 0.5943396, g: 0.5038962, b: 0.42986825, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}

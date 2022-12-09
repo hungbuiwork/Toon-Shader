@@ -65,6 +65,7 @@ Material:
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
     - _EnableAnimation: 0
+    - _EnableCastShadows: 1
     - _EnableOutline: 0
     - _EnableRimlight: 1
     - _EnableShadows: 1
@@ -82,7 +83,7 @@ Material:
     - _RimOutlineAmount: 0.5
     - _RimSmoothness: 0.01
     - _RimThreshold: 1
-    - _ShadowSmoothness: 0.238
+    - _ShadowSmoothness: 0.01
     - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

@@ -57,23 +57,36 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AnimationSpeed: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthOffset: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.01
+    - _EnableAnimation: 0
+    - _EnableCastShadows: 1
+    - _EnableOutline: 1
+    - _EnableRimlight: 0
+    - _EnableShadows: 1
+    - _EnableSpecularLight: 0
     - _GlossMapScale: 1
     - _Glossiness: 3.6
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineSize: 0
     - _Parallax: 0.02
     - _RimAmount: 1
+    - _RimIntensity: 1
+    - _RimSmoothness: 0.01
     - _RimThreshold: 1
-    - _ShadowThreshold: 0.08
+    - _ShadowSmoothness: 0.01
+    - _ShadowThreshold: 0.01
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularIntensity: 25
     - _SpecularSmoothness: 0.025
     - _SrcBlend: 1
     - _UVSec: 0
@@ -82,6 +95,7 @@ Material:
     - _AmbientColor: {r: 0.27101636, g: 0.24018037, b: 0.4339623, a: 1}
     - _Color: {r: 0.22012576, g: 0.5, b: 0.31220013, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.15503734, g: 0.29810512, b: 0.3679245, a: 1}
     - _SpecularColor: {r: 0, g: 0, b: 0, a: 1}

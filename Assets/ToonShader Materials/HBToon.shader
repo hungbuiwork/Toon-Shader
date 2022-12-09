@@ -1,10 +1,9 @@
-
+//Created by Hung Bui
 Shader "Custom/HBToon"
 {
     
     Properties
     {
-        [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
         [Header(Color Settings)]
         _Color ("Color", Color) = (1,1,1,1)
         _AmbientColor("Ambient Color", Color) = (.5,.5,.5,1)
@@ -18,7 +17,7 @@ Shader "Custom/HBToon"
         [MaterialToggle]_EnableSpecularLight("Enable Specular Light", Float) = 0
         _SpecularColor("Specular Color", Color) = (1,1,1,1)
         _SpecularSmoothness("Specular Smoothness", Range(0.001, 0.02)) = 0.001
-        _SpecularIntensity("Specular Intensity", Range(0,32)) = 25
+        _SpecularIntensity("Specular Intensity", Range(0,32)) = 32
 
         [Header(Rimlight Settings)]
         [MaterialToggle]_EnableRimlight("Enable Rimlight", Float) = 0
@@ -32,9 +31,8 @@ Shader "Custom/HBToon"
         _OutlineSize("Outline Size", Range(0, 0.1)) = 0
         _OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
         _DepthOffset("Outline Depth", Range(0, .2)) = 0
-        [Header(DELETE)]
-        [MaterialToggle]_EnableAnimation("Enable Animation", Float) = 0
-        _AnimationSpeed("Animation Speed", Range(0,100)) = 1
+
+        [MaterialToggle]_EnableCastShadows("Enable Cast Shadows", Float) = 1
 
 
 
@@ -42,7 +40,7 @@ Shader "Custom/HBToon"
     SubShader
     {
         Pass{
-            Cull front
+            Cull Front
             CGPROGRAM
             #include "UnityCG.cginc"
             #pragma vertex vert
@@ -103,6 +101,7 @@ Shader "Custom/HBToon"
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fwdbase
+            
 
 
 
@@ -123,9 +122,8 @@ Shader "Custom/HBToon"
             uniform float _EnableShadows;
             uniform float _EnableSpecularLight;
             uniform float _EnableRimlight;
-            //DELETE
-            uniform float _EnableAnimation;
-            uniform float _AnimationSpeed;
+            uniform float _EnableCastShadows;
+
             //unity defined variables
             uniform float3 _LightColor0;
 
@@ -134,6 +132,7 @@ Shader "Custom/HBToon"
                 float4 vertex: POSITION;
                 float3 normal: NORMAL;
                 float2 uv : TEXCOORD0;
+                
             };
             //output of vertex shader, input of fragment shader
             struct v2f{
@@ -141,6 +140,7 @@ Shader "Custom/HBToon"
                 float3 normal: NORMAL;
                 float3 viewDir: TEXCOORD1;
                 float2 uv : TEXCOORD0;
+                LIGHTING_COORDS(2,3)
             };
 
             v2f vert(vertexInput v){
@@ -151,24 +151,26 @@ Shader "Custom/HBToon"
                 o.pos = UnityObjectToClipPos(o.pos);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
                 o.uv = v.uv;
+                TRANSFER_VERTEX_TO_FRAGMENT(o);
                 return o;
             }
 
 
             float4 frag(v2f i): Color{
+                float shadow = LIGHT_ATTENUATION(i);
                 float3 lightDir;
                 //normalize the lighting direction
                 lightDir = normalize(_WorldSpaceLightPos0.xyz);
 
                 //calculate light intensity at fragment using dot product
                 //smoothstep allows us to create abrupt changes in color, to "toonify"
-                float3 lightIntensity = smoothstep(-_ShadowSmoothness + _ShadowThreshold, _ShadowSmoothness + _ShadowThreshold, dot(i.normal, lightDir)); 
+                float3 lightIntensity = smoothstep(-_ShadowSmoothness + _ShadowThreshold, _ShadowSmoothness + _ShadowThreshold, dot(i.normal, lightDir) * (_EnableCastShadows?shadow:1)); 
                 float3 light = lightIntensity * _LightColor0;
 
                 //Calculate specular highlight
                 float3 viewDir = normalize(i.viewDir);
                 float3 halfVector = normalize(lightDir + viewDir);
-                float specularIntensity = smoothstep(.01 - _SpecularSmoothness, .01 + _SpecularSmoothness,  _SpecularColor * pow(dot(i.normal, halfVector) * lightIntensity, (32 - _SpecularIntensity) * (32 - _SpecularIntensity) ));
+                float specularIntensity = smoothstep(.01 - _SpecularSmoothness, .01 + _SpecularSmoothness,  _SpecularColor * pow(dot(i.normal, halfVector) * lightIntensity, _SpecularIntensity * _SpecularIntensity ));
                 float4 specular = specularIntensity * _SpecularColor;
 
                 //Calculate rim shading
@@ -184,6 +186,7 @@ Shader "Custom/HBToon"
             }
             ENDCG
         }
+        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
         
     }
     //fallback in case subshader fails

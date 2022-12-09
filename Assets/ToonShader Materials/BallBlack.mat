@@ -60,11 +60,12 @@ Material:
     - _AnimationSpeed: 100
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthOffset: 0.09
+    - _DepthOffset: 0.02
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeSmoothness: 0.42
     - _EnableAnimation: 1
+    - _EnableCastShadows: 0
     - _EnableOutline: 1
     - _EnableRimlight: 1
     - _EnableShadows: 1
@@ -75,19 +76,19 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 0.0005
+    - _OutlineSize: 0.0002
     - _Parallax: 0.02
-    - _RimAmount: 0.41
-    - _RimIntensity: 1
+    - _RimAmount: 0.326
+    - _RimIntensity: 0.287
     - _RimOutlineAmount: 0.624
-    - _RimSmoothness: 0.01
+    - _RimSmoothness: 0.271
     - _RimThreshold: 0.649
-    - _ShadowSmoothness: 0.01
+    - _ShadowSmoothness: 0.365
     - _ShadowThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 22.42
-    - _SpecularSmoothness: 0.001
+    - _SpecularIntensity: 12.1
+    - _SpecularSmoothness: 0.0116
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
